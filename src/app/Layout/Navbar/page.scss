@@ -1,0 +1,39 @@
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        padding: 20px 0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .logo {
+            img {
+                width: 80px;
+            }
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .button_start {
+            button {
+                background-color: #f4a300;
+                padding: 14px 20px;
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+        }
+    }
+}
