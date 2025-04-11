@@ -15,6 +15,9 @@
     .container {
         max-width: 1400px;
         padding-top: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
         .hero_details {
             max-width: 1200px;
@@ -133,6 +136,10 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 70%;
+    max-width: 900px;
+    min-width: 150px;
+    text-align: center;
 
     .liner {
         display: flex;
@@ -140,9 +147,10 @@
         align-items: center;
         gap: 10px;
         width: 100%;
+        max-width: 450px;
 
         .line-l {
-            flex-basis: 40%;
+            flex-basis: 26%;
             height: 2px;
             background: linear-gradient(to right, #fff, #000);
         }
@@ -156,10 +164,12 @@
             color: #e27d32;
             font-family: "Poppins";
             font-weight: 600;
+            flex-basis: max-content;
+            text-align: center;
         }
 
         .line-r {
-            flex-basis: 40%;
+            flex-basis: 26%;
             height: 2px;
             background: linear-gradient(to left, #fff, #000);
         }
@@ -171,6 +181,15 @@
         font-size: 2.2em;
         color: #1e1e1e;
         padding: 10px 0;
+    }
+
+    p {
+        font-family: "Poppins";
+        font-weight: 500;
+        font-size: 1em;
+        color: #1e1e1e;
+        padding: 10px 0;
+        width: 100%;
     }
 }
 
@@ -191,7 +210,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        gap: 2rem;
+        gap: 3rem;
 
         .cards {
             width: 100%;
@@ -201,13 +220,12 @@
             align-items: center;
             gap: 2rem;
 
-
             .card {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                max-width: 250px;
+                max-width: 300px;
                 box-shadow: 0 0 20px -10px black;
                 border-radius: 20px;
 
@@ -270,15 +288,287 @@
                         background-color: #000;
                         color: #fff;
                         border: none;
-                        padding: 15px 10px;
+                        padding: 12px 10px;
                         border-radius: 10px;
                         font-family: "Poppins", sans-serif;
                         font-weight: 500;
                         font-size: 1em;
                         cursor: pointer;
-                        font-size: .8em;
+                        font-size: 0.8em;
                         width: 80%;
                     }
+                }
+            }
+        }
+
+        .btn-plus {
+            width: fit-content;
+            padding: 12px 20px;
+            font-size: 1em;
+            background-color: #f4a300;
+            color: #1e1e1e;
+            outline: none;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+}
+
+.skill {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5rem 0;
+    margin-top: 10dvh;
+    background: linear-gradient(to bottom, #0000004b, #0000004b), url(/Images/SkillBG.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-clip: border-box;
+    background-attachment: fixed;
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+
+        .title {
+            filter: invert(100%);
+
+            span {
+                filter: invert(100%);
+            }
+        }
+
+        .skills {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2rem;
+
+            .line {
+                min-height: 20dvh;
+                height: 100%;
+                width: 1px;
+                background-color: #fff;
+                opacity: 0.6;
+            }
+
+            .skill-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                padding: 20px;
+                box-shadow: 0 0 20px -10px black;
+                border-radius: 20px;
+                flex-basis: 20%;
+
+                img {
+                    width: 60%;
+                }
+
+                h3 {
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 800;
+                    font-size: 1.2em;
+                    color: #fff;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+.feedback {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5rem 0;
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+
+        .feedbacks {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            max-width: 1200px;
+
+            .feedback-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                padding: 20px;
+                box-shadow: 0 0 20px -10px black;
+                border-radius: 20px;
+                flex-basis: 22%;
+
+                .top {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    width: 100%;
+                    gap: 20px;
+
+                    img {
+                        width: 60%;
+                        max-width: 50px;
+                        max-height: 50px;
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+
+                    .details {
+                        display: flex;
+                        justify-content: center;
+                        align-items: flex-start;
+                        flex-direction: column;
+
+                        h3 {
+                            font-family: "Poppins", sans-serif;
+                            font-weight: 800;
+                            font-size: 1em;
+                            color: #1e1e1e;
+                            text-align: center;
+                        }
+
+                        p {
+                            font-family: "Poppins", sans-serif;
+                            font-weight: 500;
+                            font-size: 0.8em;
+                            color: #1e1e1e;
+                            text-align: center;
+                            opacity: 0.7;
+                        }
+                    }
+                }
+
+                .bottom {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: column;
+                    width: 100%;
+                    gap: 10px;
+                    padding: 20px 0;
+                    border-top: 2px solid #1e1e1e17;
+
+                    .stars {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 10px;
+
+                        svg {
+                            font-size: 1.2em;
+                            color: #ff7f22;
+                        }
+                    }
+
+                    p {
+                        font-family: "Poppins", sans-serif;
+                        font-weight: 500;
+                        font-size: 1em;
+                        color: #1e1e1e;
+                        opacity: 1;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.steps {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 5rem 0;
+
+    .container {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 3rem;
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: nowrap;
+            gap: 2rem;
+            max-width: 1200px;
+
+            .step-card {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 1rem;
+                flex-basis: 20%;
+
+                .img-cont {
+                    background-color: #f4a30022;
+                    border-radius: 50%;
+                    width: 160px;
+                    height: 160px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        padding: 20px;
+                        object-fit: stretch;
+                        width: 80%;
+                    }
+                }
+
+                h3 {
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 800;
+                    font-size: 1.2em;
+                    color: #e27d32;
+                    text-align: center;
+                }
+
+                p {
+                    font-family: "Poppins", sans-serif;
+                    font-weight: 500;
+                    font-size: 0.8em;
+                    color: #1e1e1e;
+                    opacity: 0.7;
+                    text-align: center;
+                    width: fit-content;
                 }
             }
         }
