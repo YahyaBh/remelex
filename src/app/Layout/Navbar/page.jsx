@@ -17,11 +17,11 @@ const Navbar = () => {
                     <a href="#">Contact</a>
                 </div>
 
-                <div className='button_start'>
+                <a href='tel:+212648403345' className='button_start'>
                     <button>
                         Demandez un devis
                     </button>
-                </div>
+                </a>
 
             </div>
 

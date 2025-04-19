@@ -37,6 +37,20 @@ export default function Home() {
   const [isTransitioning, setIsTransitioning] = useState(false)
 
 
+  const [showModal, setShowModal] = useState()
+  const [moadlID , setModalId] = useState()
+
+
+  const openModal = (id) => {
+    if(showModal) {
+      setShowModal(false)
+      setModalId(null)
+    } else {
+      setShowModal(true)
+      setModalId(id)
+    }
+  }
+
 
   const shuffleArray = (array) => {
     const newArray = [...array]
@@ -441,6 +455,13 @@ export default function Home() {
       </section>
 
 
+      {showModal ?
+        <div className="modal_gallery" onClick={() => openModal()}>
+          <div className="modal_content">
+            <img src={galleryItems[moadlID]?.image} alt={galleryItems[moadlID]?.alt + moadlID} />
+          </div>
+        </div> : ''}
+
       <section className="gallery">
         <div className="container">
           <div className="title">
@@ -491,8 +512,9 @@ export default function Home() {
                 key={item.id}
                 className={`gallery-card ${gridAssignments[item.id] || gridClasses[index % 12]}`}
                 style={{ transitionDelay: `${index * 30}ms` }}
+                onClick={() => openModal(item.id)}
               >
-                <img src={item.image || "/placeholder.svg"} alt={item.alt} />
+                <img src={item.image || "/placeholder.svg"} alt={item.id} />
               </div>
             ))}
           </div>
@@ -665,7 +687,7 @@ export default function Home() {
 
             <div className="list">
               <h5>Nos Horaires</h5>
-              <hr/>
+              <hr />
               <ul>
                 <li>Lundi: 08:00 - 17:00</li>
                 <li>Mardi: 08:00 - 17:00</li>
@@ -679,16 +701,16 @@ export default function Home() {
 
             <div className="list">
               <h5>Notre Adresse</h5>
-              <hr/>
+              <hr />
               <ul>
                 <li>Av. Abderrahim Bouabid, Secteur 6, Mag 4, Imm 3, Hay Salam – Salé</li>
                 <li>(+212) 06 48 40 33 45</li>
                 <li>contact@remelex.com</li>
               </ul>
               <div className="socials">
-                  <a href="https://www.facebook.com/remelexmaroc/"><FaFacebookF /></a>
-                  <a href="https://www.instagram.com/remelex_maroc/"><FaInstagram /></a>
-                  <a href="https://www.tiktok.com/@remelex_maroc"><FaTiktok /></a>
+                <a href="https://www.facebook.com/remelexmaroc/"><FaFacebookF /></a>
+                <a href="https://www.instagram.com/remelex_maroc/"><FaInstagram /></a>
+                <a href="https://www.tiktok.com/@remelex_maroc"><FaTiktok /></a>
               </div>
             </div>
 
