@@ -10,6 +10,10 @@ import Subnav from "./Layout/Subnav/page";
 import './page.scss'
 import { FiPhone } from "react-icons/fi";
 import { SlEnvolope } from "react-icons/sl";
+import { GoThumbsup } from "react-icons/go";
+import { VscFeedback } from "react-icons/vsc";
+import { FaBusinessTime } from "react-icons/fa6";
+
 import Footer from "./Layout/Footer/footer";
 
 const galleryItems = [
@@ -115,35 +119,35 @@ export default function Home() {
               <FaRegStar />
 
               <div className="details">
-                <h3>4.8</h3>
-                <h5>Lorem Ipsum is simply</h5>
+                <h3>4.4</h3>
+                <h5>Service de qualité</h5>
               </div>
             </div>
 
             <div className="info">
-              <FaRegStar />
+              <VscFeedback />
 
               <div className="details">
                 <h3>4.8</h3>
-                <h5>Lorem Ipsum is simply</h5>
+                <h5>Engagement et confiance</h5>
               </div>
             </div>
 
             <div className="info">
-              <FaRegStar />
+              <GoThumbsup />
 
               <div className="details">
-                <h3>4.8</h3>
-                <h5>Lorem Ipsum is simply</h5>
+                <h3>4.3</h3>
+                <h5>Fidélité assurée toujours</h5>
               </div>
             </div>
 
             <div className="info">
-              <FaRegStar />
+              <FaBusinessTime />
 
               <div className="details">
-                <h3>4.8</h3>
-                <h5>Lorem Ipsum is simply</h5>
+                <h3>4.1</h3>
+                <h5>Plus de 30 ans d’expérience</h5>
               </div>
             </div>
           </div>
@@ -191,40 +195,44 @@ export default function Home() {
               </div>
             </div>
 
+
             <div className="card">
               <div className="top">
-                <img src="/Images/doormetal.png" alt="door metal" />
+                <img src="/Images/fenceDoor.png" alt="fence door metal" />
 
                 <div className="service">
-                  <h3>Service 1</h3>
+                  <h3>Service 2</h3>
                 </div>
               </div>
               <div className="bottom">
-                <h3>Menuiserie Aluminium & Inox</h3>
-                <p>Conception et installation de fenêtres, portes et cloisons modernes en aluminium et inox, résistantes et esthétiques.</p>
+                <h3>Ferronnerie sur mesure</h3>
+                <p>Réalisation artisanale de portails, rampes et grilles décoratives en fer forgé, alliant soldité et élégance.</p>
                 <button>Demandez un devis</button>
               </div>
             </div>
 
             <div className="card">
               <div className="top">
-                <img src="/Images/doormetal.png" alt="door metal" />
+                <img src="/Images/windowAll.png" alt="window allimunium" />
 
                 <div className="service">
-                  <h3>Service 1</h3>
+                  <h3>Service 3</h3>
                 </div>
               </div>
               <div className="bottom">
-                <h3>Menuiserie Aluminium & Inox</h3>
-                <p>Conception et installation de fenêtres, portes et cloisons modernes en aluminium et inox, résistantes et esthétiques.</p>
+                <h3>Portes & fenêtres</h3>
+                <p>Fabrication et pose de portes d’entrée et fenêtres sur mesure, assurant confort, sécurité et isolation.</p>
                 <button>Demandez un devis</button>
               </div>
             </div>
+
 
           </div>
 
           <button className="btn-plus">
-            Plus de service
+            <a href="/services">
+              Plus de service
+            </a>
           </button>
 
         </div>

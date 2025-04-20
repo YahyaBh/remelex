@@ -242,15 +242,16 @@
             max-width: 900px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             gap: 2rem;
 
             .card {
+                flex: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                max-width: 300px;
+                max-width: 100%;
                 box-shadow: 0 0 20px -10px black;
                 border-radius: 20px;
 
@@ -268,7 +269,7 @@
                     position: relative;
 
                     img {
-                        width: 70%;
+                        width: 120px;
                     }
 
                     .service {
@@ -294,8 +295,10 @@
                     border-top: 10px solid #e27d32;
                     padding: 20px;
                     box-sizing: border-box;
+                    flex-grow: 1; // 🟢 Makes bottom take the remaining space
                     display: flex;
                     flex-direction: column;
+                    justify-content: space-between; // 🟢 Ensures spacing
                     gap: 1em;
                     width: 100%;
                     position: relative;
@@ -1443,5 +1446,3 @@
         }
     }
 }
-
-
