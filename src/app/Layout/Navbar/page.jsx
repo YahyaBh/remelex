@@ -11,9 +11,9 @@ const Navbar = () => {
                 </div>
 
                 <div className="menu">
-                    <a href="#">Acceuil</a>
-                    <a href="#">Services</a>
-                    <a href="#">Réalisations</a>
+                    <a href="/">Acceuil</a>
+                    <a href="/services">Services</a>
+                    <a href="/gallery">Gallery</a>
                     <a href="#">Contact</a>
                 </div>
 

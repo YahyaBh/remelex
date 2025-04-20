@@ -3,13 +3,14 @@
 import { useState, useEffect } from "react"
 
 import { FiMapPin } from "react-icons/fi";
-import { FaFacebookF, FaInstagram, FaRegStar, FaStar, FaTiktok, FaTools } from "react-icons/fa";
+import { FaRegStar, FaStar, FaTools } from "react-icons/fa";
 import Navbar from "./Layout/Navbar/page";
 import Subnav from "./Layout/Subnav/page";
 
 import './page.scss'
 import { FiPhone } from "react-icons/fi";
 import { SlEnvolope } from "react-icons/sl";
+import Footer from "./Layout/Footer/footer";
 
 const galleryItems = [
   { id: 1, image: "/Images/testGallery.png", category: "alluminume", alt: "gallery image" },
@@ -38,11 +39,11 @@ export default function Home() {
 
 
   const [showModal, setShowModal] = useState()
-  const [moadlID , setModalId] = useState()
+  const [moadlID, setModalId] = useState()
 
 
   const openModal = (id) => {
-    if(showModal) {
+    if (showModal) {
       setShowModal(false)
       setModalId(null)
     } else {
@@ -673,54 +674,7 @@ export default function Home() {
       </section>
 
 
-      <footer>
-        <div className="container">
-          <div className="left">
-            <img src="/Images/logoLight.svg" alt="logo" />
-
-            <h4>REMELEX – Expertise & Finition de Qualité</h4>
-
-            <p>Chez Remelex, nos artisans allient savoir-faire et précision pour créer des ouvrages en aluminium, inox et fer forgé, à la fois durables, esthétiques et parfaitement adaptés à chaque espace.</p>
-          </div>
-
-          <div className="right">
-
-            <div className="list">
-              <h5>Nos Horaires</h5>
-              <hr />
-              <ul>
-                <li>Lundi: 08:00 - 17:00</li>
-                <li>Mardi: 08:00 - 17:00</li>
-                <li>Mercredi: 08:00 - 17:00</li>
-                <li>Jeudi: 08:00 - 17:00</li>
-                <li>Vendredi: 08:00 - 17:00</li>
-                <li>Samedi: 08:00 - 17:00</li>
-                <li>Dimanche: Fermé</li>
-              </ul>
-            </div>
-
-            <div className="list">
-              <h5>Notre Adresse</h5>
-              <hr />
-              <ul>
-                <li>Av. Abderrahim Bouabid, Secteur 6, Mag 4, Imm 3, Hay Salam – Salé</li>
-                <li>(+212) 06 48 40 33 45</li>
-                <li>contact@remelex.com</li>
-              </ul>
-              <div className="socials">
-                <a href="https://www.facebook.com/remelexmaroc/"><FaFacebookF /></a>
-                <a href="https://www.instagram.com/remelex_maroc/"><FaInstagram /></a>
-                <a href="https://www.tiktok.com/@remelex_maroc"><FaTiktok /></a>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div className="under">
-          <p>© 2025 Remelex. Tous droits réservés.</p>
-          <p>Developed and Maintained By <a href="https://webinadigital.com/" target="_blank">Webina Digital</a>  ©</p>
-        </div>
-      </footer>
+      <Footer />
 
     </>
   );
