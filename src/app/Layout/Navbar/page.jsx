@@ -14,7 +14,7 @@ const Navbar = () => {
                     <a href="/">Acceuil</a>
                     <a href="/services">Services</a>
                     <a href="/gallery">Gallery</a>
-                    <a href="#">Contact</a>
+                    <a href="/contact">Contact</a>
                 </div>
 
                 <a href='tel:+212648403345' className='button_start'>
