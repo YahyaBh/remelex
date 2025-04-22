@@ -8,6 +8,7 @@ import Footer from '../Layout/Footer/footer'
 import { FaTools } from 'react-icons/fa'
 
 import './page.scss'
+import Loading from '../loading/page'
 
 
 const galleryItems = [
@@ -96,7 +97,7 @@ const Gallery = () => {
         }, 300)
     }
 
-    return (
+    return ( loading ? <Loading/> : 
         <div>
             <Subnav />
             <Navbar />

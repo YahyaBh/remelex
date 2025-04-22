@@ -5,9 +5,10 @@ import { FaRegStar, FaTools } from 'react-icons/fa'
 
 import './page.scss'
 import Footer from '../Layout/Footer/footer'
+import Loading from '../loading/page'
 
 const Competence = () => {
-    return (
+    return ( loading ? <Loading/> : 
         <div>
             <Subnav />
             <Navbar />

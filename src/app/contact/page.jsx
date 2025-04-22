@@ -7,9 +7,10 @@ import './page.scss'
 import { FiMapPin, FiPhone } from 'react-icons/fi'
 import { SlEnvolope } from 'react-icons/sl'
 import Footer from '../Layout/Footer/footer'
+import Loading from '../loading/page'
 
 const page = () => {
-    return (
+    return ( loading ? <Loading/> : 
         <div>
 
             <Subnav />

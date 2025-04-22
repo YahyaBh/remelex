@@ -250,30 +250,34 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
                 max-width: 100%;
                 box-shadow: 0 0 20px -10px black;
                 border-radius: 20px;
 
                 .top {
-                    padding: 20px;
+                    padding: 12%;
                     padding-bottom: 0;
                     box-sizing: border-box;
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
                     flex-direction: column;
                     gap: 2rem;
                     background-color: #f4f4f4;
                     width: 100%;
+                    height: 230px;
                     position: relative;
-
+                    flex-shrink: 0;
                     img {
-                        width: 120px;
+                        width: 130px;
+                        height: 130px;
+                        object-fit: scale-down;
                     }
-
+                    
                     .service {
                         bottom: 0;
+                        position: absolute;
                         background-color: #1e1e1e;
                         width: 70%;
                         display: flex;
@@ -292,13 +296,13 @@
                 }
 
                 .bottom {
+                    flex: 1; // ✅ Use remaining space to equalize heights
                     border-top: 10px solid #e27d32;
                     padding: 20px;
                     box-sizing: border-box;
-                    flex-grow: 1; // 🟢 Makes bottom take the remaining space
                     display: flex;
                     flex-direction: column;
-                    justify-content: space-between; // 🟢 Ensures spacing
+                    justify-content: space-between;
                     gap: 1em;
                     width: 100%;
                     position: relative;
@@ -324,9 +328,8 @@
                         border-radius: 10px;
                         font-family: "Poppins", sans-serif;
                         font-weight: 500;
-                        font-size: 1em;
-                        cursor: pointer;
                         font-size: 0.8em;
+                        cursor: pointer;
                         width: 80%;
                         margin: auto;
                     }

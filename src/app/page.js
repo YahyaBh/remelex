@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 
 import { FiMapPin } from "react-icons/fi";
 import { FaRegStar, FaStar, FaTools } from "react-icons/fa";
@@ -14,7 +14,11 @@ import { GoThumbsup } from "react-icons/go";
 import { VscFeedback } from "react-icons/vsc";
 import { FaBusinessTime } from "react-icons/fa6";
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import Footer from "./Layout/Footer/footer";
+import Loading from "./loading/page";
 
 const galleryItems = [
   { id: 1, image: "/Images/testGallery.png", category: "alluminume", alt: "gallery image" },
@@ -36,6 +40,7 @@ const gridClasses = ["div1", "div2", "div3", "div4", "div5", "div6", "div7", "di
 
 export default function Home() {
 
+  const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState("Tous")
   const [filteredItems, setFilteredItems] = useState(galleryItems)
   const [gridAssignments, setGridAssignments] = useState({})
@@ -95,382 +100,162 @@ export default function Home() {
 
 
   useEffect(() => {
+    AOS.init({ duration: 300, easing: 'ease-in-out', once: true })
     setGridAssignments(assignRandomGridClasses(galleryItems ?? galleryItems))
+    setLoading(false);
   }, [])
 
-  return (
+  return (loading ? <Loading /> :
     <>
       <Subnav />
       <Navbar />
 
-      <div className="hero">
+      {/* Hero Section */}
+      <section className="hero" data-aos="fade-down">
         <div className="container">
-          <div className="hero_details">
+          <div className="hero_details" data-aos="fade-up" data-aos-delay="100">
             <h3>remelex – Votre expert en aluminium, inox & fer forgé</h3>
-            <h1>Des solutions sur mesure pour vos maisons , commerces & <span>projets professionnels.</span></h1>
-            <div className="buttons">
+            <h1>Des solutions sur mesure pour vos maisons, commerces & <span>projets professionnels.</span></h1>
+            <div className="buttons" data-aos="zoom-in" data-aos-delay="200">
               <button className="btn devib">Demandez un devis</button>
               <button className="btn catalogue">Telecharger Catalogue</button>
             </div>
           </div>
-
           <div className="float_infos">
-            <div className="info">
-              <FaRegStar />
-
-              <div className="details">
-                <h3>4.4</h3>
-                <h5>Service de qualité</h5>
+            {[{ Icon: FaRegStar, title: '4.4', sub: 'Service de qualité' }, { Icon: VscFeedback, title: '4.8', sub: 'Engagement et confiance' }, { Icon: GoThumbsup, title: '4.3', sub: 'Fidélité assurée toujours' }, { Icon: FaBusinessTime, title: '4.1', sub: 'Plus de 30 ans d’expérience' }].map((info, i) => (
+              <div key={i} className="info" data-aos="flip-left" data-aos-delay={300 + i * 150}>
+                <info.Icon />
+                <div className="details"><h3>{info.title}</h3><h5>{info.sub}</h5></div>
               </div>
-            </div>
-
-            <div className="info">
-              <VscFeedback />
-
-              <div className="details">
-                <h3>4.8</h3>
-                <h5>Engagement et confiance</h5>
-              </div>
-            </div>
-
-            <div className="info">
-              <GoThumbsup />
-
-              <div className="details">
-                <h3>4.3</h3>
-                <h5>Fidélité assurée toujours</h5>
-              </div>
-            </div>
-
-            <div className="info">
-              <FaBusinessTime />
-
-              <div className="details">
-                <h3>4.1</h3>
-                <h5>Plus de 30 ans d’expérience</h5>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
+      </section>
 
-      </div>
-
-
-      <section className="competence">
+      {/* Competence Section */}
+      <section className="competence" data-aos="fade-up">
         <div className="container">
-
-          <div className="title">
-
+          <div className="title" data-aos="fade-right">
             <div className="liner">
               <div className="line-l"></div>
               <FaTools />
               <div className="line-r"></div>
             </div>
-
             <h2>Nos compétences</h2>
-
             <div className="liner">
               <div className="line-l"></div>
               <span>Services</span>
               <div className="line-r"></div>
             </div>
-
           </div>
 
-
-
-          <div className="cards" >
-            <div className="card">
-              <div className="top">
-                <img src="/Images/doormetal.png" alt="door metal" />
-
-                <div className="service">
-                  <h3>Service 1</h3>
+          <div className="cards">
+            {[
+              {
+                img: 'doormetal',
+                title: 'Aluminium & Inox',
+                desc: 'Conception et installation d’éléments en aluminium et en inox alliant durabilité et esthétique moderne, adaptés à tous les types de projets.',
+              },
+              {
+                img: 'fenceDoor',
+                title: 'Ferronnerie sur mesure',
+                desc: 'Portails, rampes, balustrades et décorations en fer forgé fabriqués artisanalement pour s’intégrer parfaitement à votre espace.',
+              },
+              {
+                img: 'windowAll',
+                title: 'Portes & fenêtres',
+                desc: 'Fabrication et pose de portes et fenêtres sur mesure garantissant isolation, sécurité et design élégant pour tous les styles d’habitations.',
+              },
+            ].map((item, i) => (
+              <div key={i} className="card" data-aos="zoom-in" data-aos-delay={100 + i * 200}>
+                <div className="top">
+                  <img src={`/Images/${item.img}.png`} alt={item.title} />
+                  <div className="service">
+                    <h3>Service {i + 1}</h3>
+                  </div>
+                </div>
+                <div className="bottom">
+                  <h3>{item.title}</h3>
+                  <p>{item.desc}</p>
+                  <button>Demandez un devis</button>
                 </div>
               </div>
-              <div className="bottom">
-                <h3>Menuiserie Aluminium & Inox</h3>
-                <p>Conception et installation de fenêtres, portes et cloisons modernes en aluminium et inox, résistantes et esthétiques.</p>
-                <button>Demandez un devis</button>
-              </div>
-            </div>
-
-
-            <div className="card">
-              <div className="top">
-                <img src="/Images/fenceDoor.png" alt="fence door metal" />
-
-                <div className="service">
-                  <h3>Service 2</h3>
-                </div>
-              </div>
-              <div className="bottom">
-                <h3>Ferronnerie sur mesure</h3>
-                <p>Réalisation artisanale de portails, rampes et grilles décoratives en fer forgé, alliant soldité et élégance.</p>
-                <button>Demandez un devis</button>
-              </div>
-            </div>
-
-            <div className="card">
-              <div className="top">
-                <img src="/Images/windowAll.png" alt="window allimunium" />
-
-                <div className="service">
-                  <h3>Service 3</h3>
-                </div>
-              </div>
-              <div className="bottom">
-                <h3>Portes & fenêtres</h3>
-                <p>Fabrication et pose de portes d’entrée et fenêtres sur mesure, assurant confort, sécurité et isolation.</p>
-                <button>Demandez un devis</button>
-              </div>
-            </div>
-
-
+            ))}
           </div>
 
-          <button className="btn-plus">
-            <a href="/services">
-              Plus de service
-            </a>
+          <button className="btn-plus" data-aos="fade-up" data-aos-delay="700">
+            <a href="/services">Plus de service</a>
           </button>
-
         </div>
       </section>
 
 
-      <section className="skill">
+      {/* Skill Section */}
+      <section className="skill" data-aos="fade-up">
         <div className="container">
-
-          <div className="title">
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <FaTools />
-              <div className="line-r"></div>
-            </div>
-
+          <div className="title" data-aos="fade-left">
+            <div className="liner"><div className="line-l"></div><FaTools /><div className="line-r"></div></div>
             <h2>Ce qui fait notre succès</h2>
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <span>Nos chiffres</span>
-              <div className="line-r"></div>
-            </div>
-
+            <div className="liner"><div className="line-l"></div><span>Nos chiffres</span><div className="line-r"></div></div>
           </div>
-
-
           <div className="skills">
-            <div className="skill-card">
-              <img src="/Images/customer-review 1.svg" alt="customer review" />
-              <h3>Expertise & Artisanat</h3>
-            </div>
-
-            <div className="line"></div>
-
-            <div className="skill-card">
-              <img src="/Images/hourglass.svg" alt="time glass" />
-              <h3>Respect des délais</h3>
-            </div>
-
-            <div className="line"></div>
-
-
-            <div className="skill-card">
-              <img src="/Images/solution.svg" alt="problem solve" />
-              <h3>Solutions sur mesure</h3>
-            </div>
-
-            <div className="line"></div>
-
-
-            <div className="skill-card">
-              <img src="/Images/maintenance.svg" alt="problem solve" />
-              <h3>Équipe qualifiée et professionnelle</h3>
-            </div>
+            {['customer-review 1', 'hourglass', 'solution', 'maintenance'].map((img, i) => (
+              <div key={i} className="skill-card" data-aos="flip-up" data-aos-delay={200 + i * 150}><img src={`/Images/${img}.svg`} alt={img} /><h3>{['Expertise & Artisanat', 'Respect des délais', 'Solutions sur mesure', 'Équipe qualifiée'][i]}</h3></div>
+            ))}
           </div>
-
         </div>
-
       </section>
 
-
-      <section className="feedback">
+      {/* Feedback Section */}
+      <section className="feedback" data-aos="fade-up">
         <div className="container">
-          <div className="title">
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <FaTools />
-              <div className="line-r"></div>
-            </div>
-
+          <div className="title" data-aos="fade-down">
+            <div className="liner"><div className="line-l"></div><FaTools /><div className="line-r"></div></div>
             <h2>Testimonials</h2>
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <span>Que disent nos clients</span>
-              <div className="line-r"></div>
-            </div>
-
-            <p>« Nous considérons nos clients comme des invités, à une fête où nous sommes les hôtes »</p>
-
+            <div className="liner"><div className="line-l"></div><span>Que disent nos clients</span><div className="line-r"></div></div>
+            <p data-aos="fade-up" data-aos-delay="100">« Nous considérons nos clients comme des invités... »</p>
           </div>
-
-
           <div className="feedbacks">
-            <div className="feedback-card">
-              <div className="top">
-                <img src="/Images/testPer.png" alt="person avatar" />
-                <div className="details">
-                  <h3>Bimosaurus</h3>
-                  <p>Graphic Designer</p>
-                </div>
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="feedback-card" data-aos="flip-right" data-aos-delay={200 + i * 150}>
+                <div className="top"><img src="/Images/testPer.png" alt="avatar" /><div className="details"><h3>Bimosaurus</h3><p>Graphic Designer</p></div></div>
+                <div className="bottom"><div className="stars">{[...Array(5)].map((_, idx) => <FaStar key={idx} />)} </div><p>I’ve used other kits, but this one is the best...</p></div>
               </div>
-              <div className="bottom">
-                <div className="stars">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-
-                <p>I’ve used other kits, but this one is the best. The attention to detail and usability are truly amazing.</p>
-              </div>
-
-
-            </div>
-
-            <div className="feedback-card">
-              <div className="top">
-                <img src="/Images/testPer.png" alt="person avatar" />
-                <div className="details">
-                  <h3>Bimosaurus</h3>
-                  <p>Graphic Designer</p>
-                </div>
-              </div>
-              <div className="bottom">
-                <div className="stars">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-
-                <p>I’ve used other kits, but this one is the best. The attention to detail and usability are truly amazing.</p>
-              </div>
-
-
-            </div>
-
-            <div className="feedback-card">
-              <div className="top">
-                <img src="/Images/testPer.png" alt="person avatar" />
-                <div className="details">
-                  <h3>Bimosaurus</h3>
-                  <p>Graphic Designer</p>
-                </div>
-              </div>
-              <div className="bottom">
-                <div className="stars">
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                  <FaStar />
-                </div>
-
-                <p>I’ve used other kits, but this one is the best. The attention to detail and usability are truly amazing.</p>
-              </div>
-
-
-            </div>
-
-          </div>
-
-        </div>
-      </section >
-
-
-      <section className="steps">
-        <div className="container">
-          <div className="title">
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <FaTools />
-              <div className="line-r"></div>
-            </div>
-
-            <h2>Comment ça marche</h2>
-
-            <div className="liner">
-              <div className="line-l"></div>
-              <span>Notre processus de travail</span>
-              <div className="line-r"></div>
-            </div>
-
-            <p>Ensemble pour trouver la meilleur solution avec le meilleur prix.</p>
-
-          </div>
-
-
-          <div className="steps-container">
-            <div className="step-card">
-              <div className="img-cont">
-                <img src="/Images/budget 1.svg" alt="demande devi" />
-              </div>
-              <h3>1. Devis</h3>
-              <p>L'envoyez votre demande devis en ligne ou appelez nous au téléphone.</p>
-            </div>
-
-            <img src="/Images/arrowStep.svg" alt="arrow" className="arrow" />
-
-            <div className="step-card">
-              <div className="img-cont">
-                <img src="/Images/fact-checking.svg" alt="check facture" />
-              </div>
-              <h3>2. Confirmation</h3>
-              <p>Ensemble nous trouvons la meilleure solution la plus économique et plus de qualité.</p>
-            </div>
-
-            <img src="/Images/arrowStep.svg" alt="arrow" className="arrow" />
-
-
-            <div className="step-card">
-              <div className="img-cont">
-                <img src="/Images/support.svg" alt="support available" />
-              </div>
-              <h3>3. Exécution</h3>
-              <p>Nous nous occupons de l’achat des matériels et l’installation.</p>
-            </div>
-
-            <img src="/Images/arrowStep.svg" alt="arrow" className="arrow" />
-
-
-            <div className="step-card">
-              <div className="img-cont">
-                <img src="/Images/fast-delivery.svg" alt="fast delivery" />
-              </div>
-              <h3>4. Livraison</h3>
-              <p>Apres les travaux vous faites le constat que tout est bien. nous sommes sur que vous serez satisfait.</p>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-
-      {showModal ?
-        <div className="modal_gallery" onClick={() => openModal()}>
-          <div className="modal_content">
-            <img src={galleryItems[moadlID]?.image} alt={galleryItems[moadlID]?.alt + moadlID} />
+      {/* Steps Section */}
+      <section className="steps" data-aos="fade-up">
+        <div className="container">
+          <div className="title" data-aos="fade-down">
+            <div className="liner"><div className="line-l"></div><FaTools /><div className="line-r"></div></div>
+            <h2>Comment ça marche</h2>
+            <div className="liner"><div className="line-l"></div><span>Notre processus de travail</span><div className="line-r"></div></div>
+            <p data-aos="fade-up" data-aos-delay="100">Ensemble pour trouver la meilleure solution avec le meilleur prix.</p>
           </div>
-        </div> : ''}
+          <div className="steps-container">
+            {[
+              { img: 'budget 1', title: '1. Devis', desc: "Envoyez votre demande en ligne ou appelez-nous." },
+              { img: 'fact-checking', title: '2. Confirmation', desc: "Nous trouvons la solution optimale." },
+              { img: 'support', title: '3. Exécution', desc: "Achat et installation du matériel." },
+              { img: 'fast-delivery', title: '4. Livraison', desc: "Vérification finale et satisfaction." }
+            ].map((step, i) => (
+              <React.Fragment key={i}>
+                <div className="step-card" data-aos="zoom-in" data-aos-delay={200 + i * 150}>
+                  <div className="img-cont"><img src={`/Images/${step.img}.svg`} alt={step.title} /></div>
+                  <h3>{step.title}</h3><p>{step.desc}</p>
+                </div>
+                {i < 3 && <img className="arrow" data-aos="fade-left" data-aos-delay={250 + i * 150} src="/Images/arrowStep.svg" alt="arrow" />}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+      </section>
 
+      {/* Gallery Section */}
+      {showModal && <div className="modal_gallery" onClick={() => openModal()} data-aos="fade-in"><div className="modal_content" data-aos="zoom-in"><img src={galleryItems[moadlID]?.image} alt="modal" /></div></div>}
       <section className="gallery">
         <div className="container">
           <div className="title">
@@ -491,7 +276,10 @@ export default function Home() {
 
           <div className="gallery-select">
             <ul>
-              <li className={activeFilter === "Tous" ? "active" : ""} onClick={() => handleFilterChange("Tous")}>
+              <li
+                className={activeFilter === "Tous" ? "active" : ""}
+                onClick={() => handleFilterChange("Tous")}
+              >
                 Tous
               </li>
               <li
@@ -500,10 +288,16 @@ export default function Home() {
               >
                 alluminume
               </li>
-              <li className={activeFilter === "fer" ? "active" : ""} onClick={() => handleFilterChange("fer")}>
+              <li
+                className={activeFilter === "fer" ? "active" : ""}
+                onClick={() => handleFilterChange("fer")}
+              >
                 fer
               </li>
-              <li className={activeFilter === "inox" ? "active" : ""} onClick={() => handleFilterChange("inox")}>
+              <li
+                className={activeFilter === "inox" ? "active" : ""}
+                onClick={() => handleFilterChange("inox")}
+              >
                 inox
               </li>
               <li
@@ -531,91 +325,54 @@ export default function Home() {
       </section>
 
 
-      <section className="devi">
+      {/* Devi Section */}
+      <section className="devi" data-aos="fade-up">
         <div className="container">
-          <div className="left">
-            <div className="liner">
-              <div className="line-l"></div>
-              <FaTools />
-              <div className="line-r"></div>
-            </div>
+          <div className="left" data-aos="fade-right">
+            <div className="liner"><div className="line-l"></div><FaTools /><div className="line-r"></div></div>
             <h2>Devis Gratuit</h2>
             <p>Décrivez-nous votre projet de menuiserie et on revient vers vous très vite.</p>
-            <div className="line" />
-            <p>Demandez un devis gratuit, et comparez la qualité de notre offre autour de vous..</p>
-
             <button>Demandez un devis</button>
           </div>
+          <div className="right" data-aos="fade-left"></div>
+        </div>
+      </section>
 
-          <div className="right">
-            {/* <img src="/Images/devisection.png" alt="devi image" /> */}
+      {/* Colab Section */}
+      <section className="colab" data-aos="fade-up">
+        <div className="container">
+          <div className="title" data-aos="fade-down"><div className="liner"><div className="line-l"></div><FaTools /><div className="line-r"></div></div><h2>Nos partenaires</h2></div>
+          <p data-aos="fade-up">Remelex travaille avec des partenaires fiables ...</p>
+          <div className="colab-container" data-aos="fade-up" data-aos-delay="100">
+            {[1, 2, 3, 4].map((n) => <img key={n} src="/Images/ESTest.png" alt={`colab ${n}`} />)}
           </div>
         </div>
       </section>
 
-
-      <section className="colab">
+      {/* Desc Section */}
+      <section className="desc" data-aos="fade-up">
         <div className="container">
-          <div className="title">
-            <div className="liner">
+          <div className="left" data-aos="fade-right">
+            <h2>Remelex – Un partenaire de confiance pour vos <span>projets sur mesure</span></h2>
+            <p>Remelex occupe une place reconnue ...</p>
+          </div>
+          <div className="right" data-aos="fade-left"><img src="/Images/descImage.png" alt="desc" /></div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section className="contact" data-aos="fade-up">
+        <div className="container">
+          <div className="title" data-aos="fade-down">
+            <div className="liner" data-aos="fade-up" data-aos-delay="100">
               <div className="line-l"></div>
               <FaTools />
               <div className="line-r"></div>
             </div>
 
-            <h2>Nos partenaires</h2>
+            <h2 data-aos="fade-up" data-aos-delay="200">Contactez-nous</h2>
 
-            <div className="liner">
-              <div className="line-l"></div>
-              <span>Notre réseau</span>
-              <div className="line-r"></div>
-            </div>
-          </div>
-
-          <p>Remelex travaille avec des partenaires fiables à l’échelle nationale afin de proposer à ses clients des produits de haute qualité au meilleur prix. Chaque matériau est rigoureusement sélectionné pour s’adapter aussi bien aux constructions neuves qu’aux projets de rénovation, garantissant ainsi des réalisations durables, esthétiques et parfaitement adaptées aux besoins de chaque client.</p>
-
-          <div className="colab-container">
-            <img src="/Images/ESTest.png" alt="colab 1" />
-            <img src="/Images/ESTest.png" alt="colab 2" />
-            <img src="/Images/ESTest.png" alt="colab 3" />
-            <img src="/Images/ESTest.png" alt="colab 4" />
-          </div>
-        </div>
-      </section>
-
-
-      <section className="desc">
-        <div className="container">
-          <div className="left">
-            <h2>
-              Remelex – Un partenaire de confiance pour vos <span>projets sur mesure</span>
-            </h2>
-
-            <p>
-              Remelex occupe une place reconnue sur le marché national grâce à son expertise dans les domaines de la menuiserie aluminium, inox et ferronnerie. Forte de nombreuses réalisations dans les secteurs résidentiel et professionnel, l’entreprise s’engage à proposer des solutions modernes, durables et esthétiques pour l’enveloppe du bâtiment.
-              <br />
-              Notre mission est de promouvoir l’utilisation de matériaux de haute qualité dans la fabrication de fenêtres, portes, façades, cloisons, cuisines, rampes, grilles décoratives, et bien plus encore. Chaque réalisation allie design soigné, fonctionnalité optimale et excellence artisanale, afin de répondre aux exigences les plus élevées de nos clients.</p>
-          </div>
-
-          <div className="right">
-            <img src="/Images/descImage.png" alt="desc image" />
-          </div>
-        </div>
-      </section>
-
-
-      <section className="contact">
-        <div className="container">
-          <div className="title">
-            <div className="liner">
-              <div className="line-l"></div>
-              <FaTools />
-              <div className="line-r"></div>
-            </div>
-
-            <h2>Contactez-nous</h2>
-
-            <div className="liner">
+            <div className="liner" data-aos="fade-up" data-aos-delay="300">
               <div className="line-l"></div>
               <span>Notre réseau</span>
               <div className="line-r"></div>
@@ -623,18 +380,24 @@ export default function Home() {
           </div>
 
           <div className="contact-container">
-            <div className="left">
-              <iframe frameBorder="0" style={{ border: 0 }} src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&origin=Av.%20Abderrahim%20Bouabid%2C%20Secteur%206%2C%20Mag%204%2C%20Imm%203%2C%20Hay%20Salam%20%E2%80%93%20Sal%C3%A9&destination=Av.%20Abderrahim%20Bouabid%2C%20Secteur%206%2C%20Mag%204%2C%20Imm%203%2C%20Hay%20Salam%20%E2%80%93%20Sal%C3%A9&mode=driving&zoom=13&maptype=satellite" allowFullScreen></iframe>
+            <div className="left" data-aos="fade-right" data-aos-delay="400">
+              <iframe
+                frameBorder="0"
+                style={{ border: 0 }}
+                src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyB2NIWI3Tv9iDPrlnowr_0ZqZWoAQydKJU&origin=Av.%20Abderrahim%20Bouabid%2C%20Secteur%206%2C%20Mag%204%2C%20Imm%203%2C%20Hay%20Salam%20%E2%80%93%20Sal%C3%A9&destination=Av.%20Abderrahim%20Bouabid%2C%20Secteur%206%2C%20Mag%204%2C%20Imm%203%2C%20Hay%20Salam%20%E2%80%93%20Sal%C3%A9&mode=driving&zoom=13&maptype=satellite"
+                allowFullScreen
+                title="Remelex Location"
+              ></iframe>
 
-              <div className="infos">
+              <div className="infos" data-aos="fade-up" data-aos-delay="500">
                 <ul>
                   <li>
                     <FiMapPin />
-                    <span>Av. Abderrahim Bouabid, Secteur 6, Mag 4, Imm 3, Hay Salam – Salé</span>
+                    <span>Av. Abderrahim Bouabid, Secteur 6, Mag 4, Imm 3, Hay Salam – Salé</span>
                   </li>
                   <li>
                     <FiPhone />
-                    <span>(+212 ) 06 48 40 33 45</span>
+                    <span>(+212) 06 48 40 33 45</span>
                   </li>
                   <li>
                     <SlEnvolope />
@@ -644,37 +407,42 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="right">
-
-              <div className="form">
+            <div className="right" data-aos="fade-left" data-aos-delay="600">
+              <div className="form" data-aos="fade-up" data-aos-delay="700">
                 <div className="double-inp">
-
-                  <div className="inp">
+                  <div className="inp" data-aos="fade-up" data-aos-delay="800">
                     <label htmlFor="prenom">Prenom</label>
                     <input type="text" placeholder="Prénom" />
                   </div>
-
-                  <div className="inp">
+                  <div className="inp" data-aos="fade-up" data-aos-delay="900">
                     <label htmlFor="nom">Nom</label>
                     <input type="text" placeholder="Nom" />
                   </div>
                 </div>
 
-
                 <div className="double-inp">
-                  <div className="inp">
+                  <div className="inp" data-aos="fade-up" data-aos-delay="1000">
                     <label htmlFor="email">Email</label>
                     <input type="email" placeholder="Email" />
                   </div>
-
-                  <div className="inp">
+                  <div className="inp" data-aos="fade-up" data-aos-delay="1100">
                     <label htmlFor="tel">Téléphone</label>
-                    <input type="text" placeholder="Numero de téléphone" />
+                    <input type="text" placeholder="Numéro de téléphone" />
                   </div>
                 </div>
-                <textarea placeholder="Message" />
 
-                <button>Envoyer</button>
+                <textarea
+                  placeholder="Message"
+                  data-aos="fade-up"
+                  data-aos-delay="1200"
+                />
+
+                <button
+                  data-aos="zoom-in"
+                  data-aos-delay="1300"
+                >
+                  Envoyer
+                </button>
               </div>
             </div>
           </div>
@@ -683,7 +451,6 @@ export default function Home() {
 
 
       <Footer />
-
     </>
   );
 }
