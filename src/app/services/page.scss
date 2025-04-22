@@ -62,15 +62,9 @@
                 }
             }
         }
-
     }
 
     @media (max-width: 900px) {
-        background: linear-gradient(to bottom, #ffffffa8, #ffffff48), url(/Images/HeroImage.png);
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-attachment: scroll;
 
         min-height: 100%;
 
@@ -97,7 +91,6 @@
                     }
                 }
             }
-
         }
     }
 }
@@ -180,7 +173,6 @@
     flex-direction: column;
     gap: 2rem;
     padding: 5rem 0;
-    margin-top: 10dvh;
 
     .container {
         width: 100%;
@@ -196,39 +188,44 @@
             max-width: 900px;
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: stretch;
             flex-wrap: wrap;
             gap: 2rem;
 
             .card {
+                flex: 1;
                 flex-basis: 30%;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                max-width: 300px;
+                justify-content: flex-start;
+                max-width: 100%;
                 box-shadow: 0 0 20px -10px black;
                 border-radius: 20px;
 
                 .top {
-                    padding: 20px;
+                    padding: 12%;
                     padding-bottom: 0;
                     box-sizing: border-box;
                     display: flex;
-                    justify-content: center;
+                    justify-content: space-between;
                     align-items: center;
                     flex-direction: column;
                     gap: 2rem;
                     background-color: #f4f4f4;
                     width: 100%;
+                    height: 230px;
                     position: relative;
-
+                    flex-shrink: 0;
                     img {
-                        width: 70%;
+                        width: 130px;
+                        height: 130px;
+                        object-fit: scale-down;
                     }
 
                     .service {
                         bottom: 0;
+                        position: absolute;
                         background-color: #1e1e1e;
                         width: 70%;
                         display: flex;
@@ -247,11 +244,13 @@
                 }
 
                 .bottom {
+                    flex: 1; // ✅ Use remaining space to equalize heights
                     border-top: 10px solid #e27d32;
                     padding: 20px;
                     box-sizing: border-box;
                     display: flex;
                     flex-direction: column;
+                    justify-content: space-between;
                     gap: 1em;
                     width: 100%;
                     position: relative;
@@ -277,9 +276,8 @@
                         border-radius: 10px;
                         font-family: "Poppins", sans-serif;
                         font-weight: 500;
-                        font-size: 1em;
-                        cursor: pointer;
                         font-size: 0.8em;
+                        cursor: pointer;
                         width: 80%;
                         margin: auto;
                     }
@@ -301,7 +299,7 @@
     }
 
     @media (max-width: 900px) {
-        padding: 0 1rem;
+        padding: 5rem 1rem;
 
         .container {
             padding: 0 1rem;

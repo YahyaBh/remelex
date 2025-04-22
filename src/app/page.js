@@ -22,17 +22,17 @@ import Loading from "./loading/page";
 
 const galleryItems = [
   { id: 1, image: "/Images/testGallery.png", category: "alluminume", alt: "gallery image" },
-  { id: 2, image: "/Images/testGallery.png", category: "fer", alt: "gallery image" },
-  { id: 3, image: "/Images/testGallery.png", category: "inox", alt: "gallery image" },
-  { id: 4, image: "/Images/testGallery.png", category: "travaux divers", alt: "gallery image" },
-  { id: 5, image: "/Images/testGallery.png", category: "alluminume", alt: "gallery image" },
-  { id: 6, image: "/Images/testGallery.png", category: "fer", alt: "gallery image" },
-  { id: 7, image: "/Images/testGallery.png", category: "inox", alt: "gallery image" },
-  { id: 8, image: "/Images/testGallery.png", category: "travaux divers", alt: "gallery image" },
-  { id: 9, image: "/Images/testGallery.png", category: "alluminume", alt: "gallery image" },
-  { id: 10, image: "/Images/testGallery.png", category: "fer", alt: "gallery image" },
-  { id: 11, image: "/Images/testGallery.png", category: "inox", alt: "gallery image" },
-  { id: 12, image: "/Images/testGallery.png", category: "travaux divers", alt: "gallery image" },
+  { id: 2, image: "/Images/testGallery2.png", category: "fer", alt: "gallery image" },
+  { id: 3, image: "/Images/testGallery3.png", category: "inox", alt: "gallery image" },
+  { id: 4, image: "/Images/testGallery4.png", category: "travaux divers", alt: "gallery image" },
+  { id: 5, image: "/Images/testGallery5.png", category: "alluminume", alt: "gallery image" },
+  { id: 6, image: "/Images/testGallery6.png", category: "fer", alt: "gallery image" },
+  { id: 7, image: "/Images/testGallery7.png", category: "inox", alt: "gallery image" },
+  { id: 8, image: "/Images/testGallery2.png", category: "travaux divers", alt: "gallery image" },
+  { id: 9, image: "/Images/testGallery3.png", category: "alluminume", alt: "gallery image" },
+  { id: 10, image: "/Images/testGallery4.png", category: "fer", alt: "gallery image" },
+  { id: 11, image: "/Images/testGallery5.png", category: "inox", alt: "gallery image" },
+  { id: 12, image: "/Images/testGallery6.png", category: "travaux divers", alt: "gallery image" },
 ]
 
 const gridClasses = ["div1", "div2", "div3", "div4", "div5", "div6", "div7", "div8", "div9", "div10", "div11", "div12"]
@@ -322,6 +322,12 @@ export default function Home() {
             ))}
           </div>
         </div>
+
+        {/* a button to visit gallery page */}
+        <div className="btn-plus" data-aos="fade-up" data-aos-delay="700">
+          <a href="/gallery">Voir plus</a>
+        </div>
+
       </section>
 
 

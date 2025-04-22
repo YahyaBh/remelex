@@ -274,7 +274,7 @@
                         height: 130px;
                         object-fit: scale-down;
                     }
-                    
+
                     .service {
                         bottom: 0;
                         position: absolute;
@@ -862,6 +862,23 @@
             .div12 {
                 grid-area: 3 / 7 / 4 / 8;
             }
+        }
+    }
+
+    .btn-plus {
+        width: max-content;
+        padding: 10px 30px;
+        font-size: 18px;
+        background-color: #ff7f22;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
         }
     }
 

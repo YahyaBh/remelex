@@ -4,7 +4,7 @@ import './page.scss'
 const Loading = () => {
     return (
         <div className='container-loading'>
-            <div class="loader"></div>
+            <div className="loader"></div>
         </div>
     )
 }
